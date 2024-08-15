@@ -27,17 +27,11 @@
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
 
-    // Function to encode URL
-    function encodeUrl(url) {
-        return encodeURIComponent(url);
-    }
-
     // Get model URL from query parameter
     const modelUrl = getParameterByName('modelurl');
     if (modelUrl) {
-        // Encode the model URL
-        const encodedUrl = encodeUrl(modelUrl);
-        document.getElementById('model-viewer').setAttribute('src', encodedUrl);
+        // Set the model URL directly without additional encoding
+        document.getElementById('model-viewer').setAttribute('src', modelUrl);
     }
 </script>
 </body>
