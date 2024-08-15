@@ -1,0 +1,8 @@
+[
+    {
+      "origin": ["https://curious-moxie-3f8b42.netlify.app"],
+      "method": ["GET"],
+      "maxAgeSeconds": 3600
+    }
+  ]
+  
