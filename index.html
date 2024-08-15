@@ -3,36 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Model Viewer</title>
+    <title>Document</title>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 </head>
 <body>
 
-<model-viewer id="model-viewer" class="flex items-center justify-center h-screen w-screen bg-gray-100"
+<model-viewer class="flex items-center justify-center h-screen w-screen bg-gray-100"
   alt="My 3D Model"
+  src="./assets/armchair.glb" 
   shadow-intensity="1" 
   camera-controls 
   touch-action="pan-y">
 </model-viewer>
-
-<script>
-    // Function to get URL parameters
-    function getParameterByName(name, url = window.location.href) {
-        name = name.replace(/[\[\]]/g, '\\$&');
-        const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
-        const results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
-
-    // Get model URL from query parameter
-    const modelUrl = getParameterByName('modelurl');
-    if (modelUrl) {
-        // Decode and use the model URL directly
-        document.getElementById('model-viewer').setAttribute('src', modelUrl);
-    }
-</script>
 </body>
-</html>
+</html> 
