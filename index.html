@@ -30,7 +30,7 @@
     // Get model URL from query parameter
     const modelUrl = getParameterByName('modelurl');
     if (modelUrl) {
-        // Set the model URL directly without additional encoding
+        // Decode and use the model URL directly
         document.getElementById('model-viewer').setAttribute('src', modelUrl);
     }
 </script>
