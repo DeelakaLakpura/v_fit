@@ -3,18 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>3D Model Viewer</title>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 </head>
 <body>
+    <model-viewer id="model-viewer" class="flex items-center justify-center h-screen w-screen bg-gray-100"
+                  alt="My 3D Model"
+                  shadow-intensity="1"
+                  camera-controls
+                  touch-action="pan-y">
+    </model-viewer>
 
-<model-viewer class="flex items-center justify-center h-screen w-screen bg-gray-100"
-  alt="My 3D Model"
-  src="https://firebasestorage.googleapis.com/v0/b/vfit-8e85e.appspot.com/o/models%2Frelax_leather_chair__relax_ledersessel.glb?alt=media&token=776eecf8-1a1d-42be-96e0-26b5c48e4acf" 
-  shadow-intensity="1" 
-  camera-controls 
-  touch-action="pan-y">
-</model-viewer>
+    <script>
+        // Function to get the URL parameter
+        function getUrlParameter(name) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            let urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Get the srcUrl parameter value
+        const srcUrl = getUrlParameter('srcUrl');
+
+        // Get the model-viewer element
+        const modelViewer = document.getElementById('model-viewer');
+
+        // Set the src attribute of the model-viewer element
+        if (srcUrl) {
+            modelViewer.setAttribute('src', srcUrl);
+        } else {
+            // Optionally handle cases where srcUrl is not provided
+            modelViewer.setAttribute('src', './assets/armchair.glb'); // Set a default GLB file
+        }
+    </script>
 </body>
-</html> 
+</html>
