@@ -17,19 +17,23 @@
 </model-viewer>
 
 <script>
-    // Function to get query parameter by name
     function getQueryParam(param) {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(param);
     }
 
-    // Get the src parameter from the URL
-    const modelSrc = getQueryParam('src');
+    function encodeURL(url) {
+        return encodeURIComponent(url);
+    }
 
-    // If a src parameter exists, set it as the src for the model-viewer
-    if (modelSrc) {
+    // Get the raw src parameter from the URL
+    const rawModelSrc = getQueryParam('src');
+
+    if (rawModelSrc) {
+        // Encode the URL to make sure it works correctly
+        const encodedModelSrc = encodeURL(rawModelSrc);
         const modelViewer = document.getElementById('modelViewer');
-        modelViewer.setAttribute('src', modelSrc);
+        modelViewer.setAttribute('src', decodeURIComponent(encodedModelSrc));
     } else {
         console.error('No src parameter provided in the URL.');
     }
