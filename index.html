@@ -2,44 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 </head>
 <body>
 
-  <!-- Add a text input field and a button -->
-  <input type="text" id="model-url" placeholder="Enter your 3D model URL">
-  <button id="update-model">Update Model</button>
-
-  <!-- The model viewer element -->
-  <model-viewer class="flex items-center justify-center h-screen w-screen bg-gray-100"
-    alt="My 3D Model"
-    src="" 
-    shadow-intensity="1" 
-    camera-controls 
-    touch-action="pan-y">
-  </model-viewer>
-
-  <!-- Add a script to update the src attribute -->
-  <script>
-    const modelUrlInput = document.getElementById('model-url');
-    const updateButton = document.getElementById('update-model');
-    const modelViewer = document.querySelector('model-viewer');
-
-    updateButton.addEventListener('click', async () => {
-      const userInput = modelUrlInput.value.trim();
-      const url = new URL(window.location.href);
-      url.searchParams.set('modelurl', userInput);
-      const response = await fetch(url.href, {
-        headers: {
-          'Accept': 'model/gltf-binary'
-        }
-      });
-      const modelUrl = response.url;
-      modelViewer.src = modelUrl;
-    });
-  </script>
+<model-viewer class="flex items-center justify-center h-screen w-screen bg-gray-100"
+  alt="My 3D Model"
+  src="https://firebasestorage.googleapis.com/v0/b/vfit-8e85e.appspot.com/o/models%2Frelax_leather_chair__relax_ledersessel.glb?alt=media&token=776eecf8-1a1d-42be-96e0-26b5c48e4acf" 
+  shadow-intensity="1" 
+  camera-controls 
+  touch-action="pan-y">
+</model-viewer>
 </body>
-</html>
+</html> 
