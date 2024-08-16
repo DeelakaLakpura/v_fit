@@ -9,12 +9,33 @@
 </head>
 <body>
 
-<model-viewer class="flex items-center justify-center h-screen w-screen bg-gray-100"
-  alt="My 3D Model"
-  src="https://firebasestorage.googleapis.com/v0/b/vfit-8e85e.appspot.com/o/models%2Frelax_leather_chair__relax_ledersessel.glb?alt=media&token=776eecf8-1a1d-42be-96e0-26b5c48e4acf" 
-  shadow-intensity="1" 
-  camera-controls 
-  touch-action="pan-y">
-</model-viewer>
+  <!-- Add a text input field and a button -->
+  <input type="text" id="model-url" placeholder="Enter your 3D model URL (relative to this website)">
+  <button id="update-model">Update Model</button>
+
+  <!-- The model viewer element -->
+  <model-viewer class="flex items-center justify-center h-screen w-screen bg-gray-100"
+    alt="My 3D Model"
+    src="" 
+    shadow-intensity="1" 
+    camera-controls 
+    touch-action="pan-y">
+  </model-viewer>
+
+  <!-- Add a script to update the src attribute -->
+  <script>
+    const modelUrlInput = document.getElementById('model-url');
+    const updateButton = document.getElementById('update-model');
+    const modelViewer = document.querySelector('model-viewer');
+    const websiteUrl = 'https://curious-moxie-3f8b42.netlify.app/'; // your website URL
+
+    updateButton.addEventListener('click', () => {
+      const newUrl = modelUrlInput.value.trim();
+      if (newUrl) {
+        const completeUrl = websiteUrl + newUrl;
+        modelViewer.src = completeUrl;
+      }
+    });
+  </script>
 </body>
-</html> 
+</html>
