@@ -27,13 +27,18 @@
     const modelUrlInput = document.getElementById('model-url');
     const updateButton = document.getElementById('update-model');
     const modelViewer = document.querySelector('model-viewer');
-    const websiteUrl = 'https://curious-moxie-3f8b42.netlify.app/';
-    const modelUrlPrefix = 'modelurl=';
 
-    updateButton.addEventListener('click', () => {
+    updateButton.addEventListener('click', async () => {
       const userInput = modelUrlInput.value.trim();
-      const fullUrl = `${websiteUrl}${modelUrlPrefix}${userInput}`;
-      modelViewer.src = fullUrl;
+      const url = new URL(window.location.href);
+      url.searchParams.set('modelurl', userInput);
+      const response = await fetch(url.href, {
+        headers: {
+          'Accept': 'model/gltf-binary'
+        }
+      });
+      const modelUrl = response.url;
+      modelViewer.src = modelUrl;
     });
   </script>
 </body>
