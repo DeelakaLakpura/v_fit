@@ -12,7 +12,8 @@
                   alt="My 3D Model"
                   shadow-intensity="1"
                   camera-controls
-                  touch-action="pan-y">
+                  touch-action="pan-y"
+                  src="https://firebasestorage.googleapis.com/v0/b/vfit-8e85e.appspot.com/o/models/banana_plant_with_pot.glb?alt=media&token=5d693b49-8cdb-4c30-9252-b56aad8d1bf0">
     </model-viewer>
 
     <script>
@@ -29,21 +30,15 @@
         // Get the model-viewer element
         const modelViewer = document.getElementById('model-viewer');
 
-        // Check if srcUrl is provided
+        // Set the src attribute of the model-viewer element if srcUrl is provided
         if (srcUrl) {
-            // Encode the URL to avoid any issues with special characters
-            const encodedSrcUrl = encodeURIComponent(srcUrl);
-
-            // Debugging - Log the URLs
-            console.log('Original srcUrl:', srcUrl);
-            console.log('Encoded srcUrl:', encodedSrcUrl);
+            // Log the provided URL
+            console.log('Provided srcUrl:', srcUrl);
 
             // Set the src attribute of the model-viewer element
-            modelViewer.setAttribute('src', decodeURIComponent(encodedSrcUrl));
+            modelViewer.setAttribute('src', srcUrl);
         } else {
-            // Handle cases where srcUrl is not provided
             console.error('No srcUrl parameter provided in the URL.');
-            modelViewer.setAttribute('src', './assets/armchair.glb'); // Set a default GLB file
         }
     </script>
 </body>
