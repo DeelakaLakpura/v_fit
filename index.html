@@ -27,13 +27,11 @@
     const modelUrlInput = document.getElementById('model-url');
     const updateButton = document.getElementById('update-model');
     const modelViewer = document.querySelector('model-viewer');
-    const websiteUrl = 'https://curious-moxie-3f8b42.netlify.app/'; // your website URL
-
+  
     updateButton.addEventListener('click', () => {
       const newUrl = modelUrlInput.value.trim();
       if (newUrl) {
-        const completeUrl = websiteUrl + newUrl;
-        modelViewer.src = completeUrl;
+        modelViewer.src = newUrl; // use the input URL as-is
       }
     });
   </script>
