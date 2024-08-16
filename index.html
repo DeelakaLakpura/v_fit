@@ -29,11 +29,20 @@
         // Get the model-viewer element
         const modelViewer = document.getElementById('model-viewer');
 
-        // Set the src attribute of the model-viewer element
+        // Check if srcUrl is provided
         if (srcUrl) {
-            modelViewer.setAttribute('src', srcUrl);
+            // Encode the URL to avoid any issues with special characters
+            const encodedSrcUrl = encodeURIComponent(srcUrl);
+
+            // Debugging - Log the URLs
+            console.log('Original srcUrl:', srcUrl);
+            console.log('Encoded srcUrl:', encodedSrcUrl);
+
+            // Set the src attribute of the model-viewer element
+            modelViewer.setAttribute('src', decodeURIComponent(encodedSrcUrl));
         } else {
-            // Optionally handle cases where srcUrl is not provided
+            // Handle cases where srcUrl is not provided
+            console.error('No srcUrl parameter provided in the URL.');
             modelViewer.setAttribute('src', './assets/armchair.glb'); // Set a default GLB file
         }
     </script>
