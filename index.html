@@ -29,9 +29,15 @@
     const modelViewer = document.querySelector('model-viewer');
   
     updateButton.addEventListener('click', () => {
-      const newUrl = modelUrlInput.value.trim();
-      if (newUrl) {
-        modelViewer.src = newUrl; // use the input URL as-is
+      const userInput = modelUrlInput.value.trim();
+      const websiteUrl = 'https://curious-moxie-3f8b42.netlify.app/';
+      const modelUrlPrefix = 'modelurl=';
+  
+      if (userInput.startsWith(websiteUrl) && userInput.includes(modelUrlPrefix)) {
+        const modelUrl = userInput.replace(websiteUrl, '').replace(modelUrlPrefix, '');
+        modelViewer.src = modelUrl;
+      } else {
+        alert('Invalid input format. Please use the format: https://curious-moxie-3f8b42.netlify.app/modelurl=<model_url>');
       }
     });
   </script>
