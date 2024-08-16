@@ -10,7 +10,7 @@
 <body>
 
   <!-- Add a text input field and a button -->
-  <input type="text" id="model-url" placeholder="Enter your 3D model URL (relative to this website)">
+  <input type="text" id="model-url" placeholder="Enter your 3D model URL">
   <button id="update-model">Update Model</button>
 
   <!-- The model viewer element -->
@@ -30,15 +30,7 @@
   
     updateButton.addEventListener('click', () => {
       const userInput = modelUrlInput.value.trim();
-      const websiteUrl = 'https://curious-moxie-3f8b42.netlify.app/';
-      const modelUrlPrefix = 'modelurl=';
-  
-      if (userInput.startsWith(websiteUrl) && userInput.includes(modelUrlPrefix)) {
-        const modelUrl = userInput.replace(websiteUrl, '').replace(modelUrlPrefix, '');
-        modelViewer.src = modelUrl;
-      } else {
-        alert('Invalid input format. Please use the format: https://curious-moxie-3f8b42.netlify.app/modelurl=<model_url>');
-      }
+      modelViewer.src = userInput;
     });
   </script>
 </body>
